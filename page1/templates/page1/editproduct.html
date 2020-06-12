@@ -1,0 +1,27 @@
+{% extends 'page1/basic.html' %}
+{% block css%}
+#main{
+    max-width:600px;
+    height:850px;
+}
+{%endblock%}
+{% block title%}Update{%endblock%}
+{% block body%}
+<br>
+<br>
+<br>
+<div class="container border" id="main">
+    <form action="editproduct?q={{msg.id}}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        Client name <br><input type="text" class="form-control" name="txtuser" readonly="true" value="{{msg.client_name}}"> <br>
+        Product name <br><input type="text" class="form-control" name="txtname" value="{{msg.product_name}}"> <br>
+        Category <br><input type="text" class="form-control" name="txtcat" value="{{msg.category}}"> <br>
+        Sub-category <br><input type="text" class="form-control" name="txtsub" value="{{msg.subcategoru}}"> <br>
+        Price<br> <input type="number" class="form-control" name="txtprice" value="{{msg.price}}"><br>
+        Description<br> <input type="text" name="txtdesc" class="form-control" value="{{msg.desc}}"> <br>
+        Publish date<br> <input type="date" name="txtpub" class="form-control" value="{{msg.pub_date}}" required><br>
+        Image <input type="file"  name="txtimage" class="form-control" value="{{msg.image.url}}" required> <br><br>
+        <input type="submit" value="Continue" class="btn btn-outline-success"><br>
+    </form>
+</div>
+    {%endblock%}

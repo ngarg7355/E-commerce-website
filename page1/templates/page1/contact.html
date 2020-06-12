@@ -1,0 +1,24 @@
+{% extends 'page1/basic.html' %}
+{% block css%}
+#main{
+    margin-top:80px;
+    height:600px;
+    width:450px;
+    padding:10px
+}
+{%endblock%}
+    {% block title %}Contact us{% endblock %}
+{% block body%}
+<br>
+<div class="container border" id="main">
+    <h1>Contact us</h1>
+    <form action="contact" method="POST">
+        {%csrf_token%}
+        Your name <br><input type="text" class="form-control" name="txtname"> <br>
+        Mobile number <br> <input type="tel" class="form-control" name="txtmob" placeholder="Mobile number"><br>
+        Email <br> <input type="email" name="txtemail" class="form-control"> <br>
+        How may i help you?<br> <input type="text" name="txtdesc" class="form-control" placeholder="Enter Your problem here."><br><br>
+        <input type="submit" value="Continue" class="btn btn-outline-success"><br>
+    </form>
+</div>
+{% endblock %}

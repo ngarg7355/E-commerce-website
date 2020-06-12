@@ -1,0 +1,74 @@
+{% extends 'page1/basic.html' %}
+{%load static%}
+  {% block css %}
+        .col-md-3{
+            display: inline-block;
+            margin-left: -4px;
+        }
+        .col-md-3 img{
+            width: 100%;
+            height: auto;
+        }
+        body .carousel-indicator li{
+            background-color: blue;
+        }
+        body .no-padding{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .w{
+          width:15px;
+          height:10px;
+          margin-top:150px;
+        }
+    {% endblock %}
+    {% block title %}E-Shop {%endblock%}
+        {% block body %}
+          {{msg}}
+          <br>
+          <br>
+        <div class="container">
+          <!-- product slider -->
+          <br>
+          {{msg}}
+          {% for pro, range, nslides in allprods %}
+          <h1>{{pro.0.category}}</h1>
+          <br>
+          <div id="demo{{forloop.counter}}" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#demo{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                {% for i in range %}
+                <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor %}
+              </ol>
+            <div class="container carousel-inner no-padding">
+              <div class="carousel-item active">
+                {% for i in pro%}
+                <div class="col-xs-3 col-sm-3 col-md-3"">
+                    <div class="card" style="width: 16rem;">
+                      <a href="productview?q={{i.id}}"><img src="/media/{{i.image}}" class="card-img-top img-fluid" style="width: 200px;height: 200px;" alt={%static 'page1/2.jpg'%}></a>
+                        <div class="card-body">
+                          <h5 class="card-title">{{i.product_name}}</h5>
+                         <p class="card-text">{{i.desc}}</p>
+                            <a href="addcart?c={{i.id}}" class="btn btn-outline-primary">add to cart</a>
+                            <a href="#" class="btn btn-outline-primary">Buy now</a>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+              </div><div class="carousel-item">
+                {% endif %}
+                {% endfor %}
+              </div>
+              </div>
+              <a class="carousel-control-prev w"href="#demo{{forloop.counter}}" data-slide="prev">
+                <span class="carousel-control-prev-icon" style="background-color: blue;"></span>
+              </a>
+              <a class="carousel-control-next w" href="#demo{{forloop.counter}}" data-slide="next">
+                <span class="carousel-control-next-icon " style="background-color: blue;"></span>
+              </a>
+              </div>
+
+              {% endfor %}
+            </div>
+          {%endblock%}

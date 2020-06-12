@@ -1,0 +1,38 @@
+{% extends 'page1/basic.html' %}
+{% block css%}{%endblock%}
+{% block title%}Update{%endblock%}
+{% block body%}
+<br><br><br>
+<div class="container">
+    <h3 style="width:600px; color: rgba(0, 255, 0, 0.589);">Hii {{r.user_name}}, you have <br> logged in successfully.</h3>
+    <li class="dropdown float-right" style="margin-top: -40px;">
+        <a class="dropdown-toggle btn-outline-success btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{r.user_name}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="find?q={{r.id}}">Edit</a>
+          <a class="dropdown-item" href="delete?q={{r.id}}">Delete</a>
+          <a class="dropdown-item" href="logout">logout</a>
+        </div>
+      </li>
+      <h3 class="d-inline-block">Total Price=0{{pric}}</h3><a href="address" class="btn btn-outline-success d-inline-block ml-2 mb-2">Continue</a>
+      {% for q,pq,pr,i in prolis%}
+    <div class="card mb-3" style="max-width: 900px; background-color: lavender;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/media/{{pr.image}}" class="card-img" alt="Product image" style="max-width: 300px;max-height: 300px;" >
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{pr.product_name}}</h5>
+              <p class="card-text">{{pr.desc}}</p>
+              <p class="card-text"><small class="text-muted">{{pr.price}}*{{q}}={{pq}}</small></p>
+              <a href="ddquantity?q={{i.id}}" class="btn btn-outline-success">add</a>
+              <a href="emovequantity?q={{i.id}}" class="btn btn-outline-success">Remove</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+{%endblock%}

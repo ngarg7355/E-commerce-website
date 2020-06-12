@@ -1,0 +1,26 @@
+{% extends 'page1/basic.html' %}
+{% block css%}
+#main{
+    margin-top:80px;
+    height:600px;
+    width:450px;
+    padding:10px
+}
+{%endblock%}
+    {% block title %}signup {% endblock %}
+{% block body%}
+<br>
+    <div class="container border" id="main">
+        <h1>For Client</h1>
+        <h2>Create Account</h2>
+        <form action="signupc" method="POST">
+            {%csrf_token%}
+            Your name <br><input type="text" class="form-control" name="txtname"> <br>
+            Mobile number <br> <input type="number" class="form-control" name="txtmob" placeholder="Mobile number"><br>
+            Email <br> <input type="email" name="txtemail" class="form-control"> <br>
+            Password <br> <input type="password" name="txtpass" class="form-control" placeholder="At least 6 characters"><br><br>
+            <input type="submit" value="Continue" class="btn btn-outline-success"><br>
+        </form>
+        Already have an account? <a href="loginc" class="btn btn-outline-success">login</a>
+    </div>
+{% endblock %}

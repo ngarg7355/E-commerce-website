@@ -1,0 +1,32 @@
+{% extends 'page1/basic.html' %}
+{% block css%}
+#main{
+    margin-top:80px;
+    height:400px;
+    width:450px;
+    padding:10px
+}
+{%endblock%}
+    {% block title %}login {% endblock %}
+{% block body%}
+<br>
+<br>
+<br>
+<div class="container border" id="main">
+    <h1>For Customer</h1>
+    <h2>Login</h2>
+    <form action="login" method="POST">
+        {%csrf_token%}
+        Mobile number <br> <input type="number" class="form-control" name="txtmob" placeholder="Mobile number"><br>
+        Password <br> <input type="password" name="txtpass" class="form-control" placeholder="At least 6 characters"><br><br>
+        <input type="submit" value="Continue" class="btn btn-outline-success"><br>
+    </form>
+    Create your account? <a href="signup" class="btn btn-outline-success">signup</a>
+</div>
+<script>
+    if ({{msg}}==8){
+        alert("invalid id and password")
+    }
+
+</script>
+    {% endblock %}

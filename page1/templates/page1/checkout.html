@@ -1,0 +1,42 @@
+{% extends 'page1/basic.html' %}
+{% block css%}{%endblock%}
+{% block title%}Checkout{%endblock%}
+{% block body%}
+<br><br><br>
+<div class="container">
+    <li class="dropdown float-right" ">
+        <a class="dropdown-toggle btn-outline-success btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{r.user_name}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="findc?q={{r.id}}">Edit</a>
+          <a class="dropdown-item" href="deletec?q={{r.id}}">Delete</a>
+          <a class="dropdown-item" href="logoutc">logout</a>
+        </div>
+      </li>
+    {% for i in q%}
+    <div class="card mb-3" style="max-width: 900px; background-color: lavender;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/media/{{i.image}}" class="card-img" alt="Product image" style="max-width: 300px;max-height: 300px;" >
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{i.product_name}}</h5>
+              <p class="card-text">{{i.desc}}</p>
+              <p class="card-text"><small class="text-muted">{{i.price}}</small></p>
+              <p class="card-text"><small class="text-muted">{{i.pub_date}}</small></p>
+              <a href="editproduct?q={{i.id}}" class="btn btn-outline-success">Edit</a>
+              <a href="remove?q={{i.id}}" class="btn btn-outline-success">Remove</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+<script>
+  if ({{msg}}==8){
+    alert("you are not login yet. Please login first")
+  }
+</script>
+{%endblock%}

@@ -1,0 +1,24 @@
+{% extends 'page1/basic.html' %}
+{% block css%}
+#main{
+    max-width:600px;
+}{%endblock%}
+{% block title%}Update{%endblock%}
+{% block body%}
+<br><br><br>
+<div class="container border" id="main">
+    <h2>For adding new product</h2>
+    <form action="add" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        Client name <br><input type="text" class="form-control" name="txtuser" readonly="true" value="{{name}}"> <br>
+        Product name <br><input type="text" class="form-control" name="txtname"> <br>
+        Category <br><input type="text" class="form-control" name="txtcat"> <br>
+        Sub-category <br><input type="text" class="form-control" name="txtsub"> <br>
+        Price<br> <input type="number" class="form-control" name="txtprice"><br>
+        Description<br> <input type="text" name="txtdesc" class="form-control"> <br>
+        Publish date<br> <input type="date" name="txtpub" class="form-control"><br>
+        Image <input type="file"  name="txtimage" class="form-control"> <br><br>
+        <input type="submit" value="Continue" class="btn btn-outline-success"><br>
+    </form>
+</div>
+{%endblock%}

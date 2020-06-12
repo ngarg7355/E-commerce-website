@@ -1,0 +1,25 @@
+{% extends 'page1/basic.html' %}
+{% block css%}
+#main{
+    max-width:600px;
+    height:500px;
+}
+{%endblock%}
+{% block title%}Update{%endblock%}
+{% block body%}
+<br>
+<br>
+<br>
+<div class="container border" id="main">
+    <form action="updatec?q={{msg.id}}" method="POST">
+        {%csrf_token%}
+        <br>
+        Id<input type="number" class="form-control" value="{{msg.id}}" readonly="true" style="margin-top: 10px;margin-bottom: 10px;">
+        Name <input type="text" name="txtname"  class="form-control" value="{{msg.user_name}}"> <br>
+        Password<input type="password" name="txtpass"  class="form-control" value="{{msg.password}}"><br>
+        Mobile<input type="number" name="txtmob"  class="form-control" value="{{msg.mobile}}"><br>
+        Email<input type="text" name="txtemail"  class="form-control" value="{{msg.email}}"> <br>
+        <input type="submit" class="btn btn-outline-success" value="update"><br>
+    </form>
+</div>
+    {%endblock%}
